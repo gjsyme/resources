@@ -78,7 +78,7 @@ const init = async () => {
 
   // Write README.md file
   fs.writeFileSync(
-    './README.md',
+    './RESOURCES.md',
     `${README_RESOURCE_HEADER}${README_RESOURCE_BODY}`,
   );
 };
