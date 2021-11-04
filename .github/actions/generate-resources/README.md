@@ -7,17 +7,17 @@ This action reads data from the Developer DAO Airtable and puts its content into
 - [@gjsyme](https://github.com/gjsyme)
 - [@codingwithmanny](https://github.com/codingwithmanny)
 
-## Requirements
+## Local Requirements
 
 - NVM or Node `v16.13.0`
 
-## Setup
+## Local Setup
 
 ```bash
 yarn install;
 ```
 
-## Tests
+## Local Tests
 
 ```bash
 yarn test;
@@ -35,7 +35,23 @@ node .github/actions/generate-resources/main.js --run;
 node .github/actions/generate-resources/node_modules/.bin/prettier README.md --write;
 ```
 
-## Example GitHub Action Usage 
+## Inputs
+
+None
+
+## Outputs
+
+None
+
+## Example usage 
+
+```yaml
+uses: actions/hello-world-javascript-action@v1.1
+with:
+  who-to-greet: 'Mona the Octocat'
+```
+
+Full example:
 
 ```yaml
 jobs:

@@ -83,14 +83,6 @@ const init = async () => {
   );
 };
 
-
-/**
- * On the condition of flag node main.js --run
- */
-if (process.argv && process.argv.includes('--run')) {  
-  init();
-}
-
 // Exports
 // ========================================================
 module.exports = {

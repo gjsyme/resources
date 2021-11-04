@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "node main.js --run && ./node_modules/.bin/prettier README.md --write",
+    "start": "node main.js && ./node_modules/.bin/prettier README.md --write",
     "test": "jest",
     "prettier": "./node_modules/.bin/prettier . --write"
   },
