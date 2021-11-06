@@ -55,7 +55,7 @@ const init = async () => {
   // Retrieve airtable data
   const resourcesData = await fetchAirtableData('Resource');
   const authorsData = await fetchAirtableData('Author');
-  console.log(`received ${resourcesData.length} resources and ${authorsData.length} authors`)
+
   // ids used with resources
   const authorMap = {};
   authorsData.forEach((item) => {
@@ -75,21 +75,13 @@ const init = async () => {
         }`
     )
     .join('\n\n');
-  console.log('writing to ./README.md',README_RESOURCE_HEADER,README_RESOURCE_BODY);
+
   // Write README.md file
   fs.writeFileSync(
     './README.md',
     `${README_RESOURCE_HEADER}${README_RESOURCE_BODY}`,
   );
 };
-
-
-/**
- * On the condition of flag node main.js --run
- */
-// if (process.argv && process.argv.includes('--run')) {  
-init();
-// }
 
 // Exports
 // ========================================================
