@@ -55,11 +55,14 @@ const init = async () => {
   // Retrieve airtable data
   const resourcesData = await fetchAirtableData('Resource');
   const authorsData = await fetchAirtableData('Author');
+  console.log(
+    `received ${resourcesData.length} resources and ${authorsData.length} authors`,
+  );
 
   // ids used with resources
   const authorMap = {};
   authorsData.forEach((item) => {
-    if (item?.id && item?.fields) { 
+    if (item?.id && item?.fields) {
       authorMap[item.id] = item.fields;
     }
   });
@@ -70,11 +73,16 @@ const init = async () => {
       (item) =>
         `- [${item?.fields?.Title}](${item?.fields?.Source})\n\n  Author${
           item?.fields?.Author?.length > 1 ? 's' : ''
-        }: ${item?.fields?.Author?.map((authorId) => authorMap[authorId]?.Name ?? '')}${
-          item?.fields?.Summary ? '\n' + item?.fields?.Summary : ''
-        }`
+        }: ${item?.fields?.Author?.map(
+          (authorId) => authorMap[authorId]?.Name ?? '',
+        )}${item?.fields?.Summary ? '\n' + item?.fields?.Summary : ''}`,
     )
     .join('\n\n');
+  console.log(
+    'writing to ./README.md',
+    README_RESOURCE_HEADER,
+    README_RESOURCE_BODY,
+  );
 
   // Write README.md file
   fs.writeFileSync(
@@ -90,5 +98,5 @@ module.exports = {
   init,
   AIRTABLE_READONLY_KEY,
   AIRTABLE_RESOURCE_BASE,
-  README_RESOURCE_HEADER
+  README_RESOURCE_HEADER,
 };
